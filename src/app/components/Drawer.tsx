@@ -8,6 +8,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import BugReportOutlinedIcon from '@mui/icons-material/BugReportOutlined';
+import { AuthContext } from '../../context/AuthContext';
+import React, { useContext } from 'react';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -29,7 +31,7 @@ const useStyles = makeStyles(() =>
 export const DrawerComponent: React.FunctionComponent = () => {
 
     const [openDrawer, setOpenDrawer] = useState(false);
-
+    const user = useContext(AuthContext);
     const classes = useStyles();
 
     const CloseDrawer = () => {
@@ -57,7 +59,7 @@ export const DrawerComponent: React.FunctionComponent = () => {
                     </ListItem>
                     <ListItem onClick={CloseDrawer}>
                         <ListItemText>
-                            <Link className={classes.link} to="/login"><LockOpenOutlinedIcon /> Login</Link>
+                            <Link className={classes.link} to="/login"><LockOpenOutlinedIcon /> {user ? user.email : 'Login'}</Link>
                         </ListItemText>
                     </ListItem>
                     <ListItem onClick={CloseDrawer}>
@@ -65,11 +67,12 @@ export const DrawerComponent: React.FunctionComponent = () => {
                             <Link className={classes.link} to="/contactsUs">< PhoneInTalkOutlinedIcon /> Contact us</Link>
                         </ListItemText>
                     </ListItem>
-                    <ListItem onClick={CloseDrawer}>
-                        <ListItemText>
-                            <Link className={classes.link} to="/tickets"> <BugReportOutlinedIcon /> Tickets</Link>
-                        </ListItemText>
-                    </ListItem>
+                    {user &&
+                        <ListItem onClick={CloseDrawer}>
+                            <ListItemText>
+                                <Link className={classes.link} to="/tickets"> <BugReportOutlinedIcon /> Tickets</Link>
+                            </ListItemText>
+                        </ListItem>}
                 </List>
             </Drawer>
             <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
