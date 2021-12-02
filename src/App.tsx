@@ -6,6 +6,7 @@ import Login from './app/containers/Login';
 import { NotFound } from './app/containers/NotFound';
 import { ResetPassword } from './app/containers/ResetPassword';
 import { StartPage } from './app/containers/StartPage';
+import ChangePass from './app/containers/ChangePass';
 import './styles/App.css';
 
 export const App: React.FunctionComponent = () => {
@@ -18,6 +19,7 @@ export const App: React.FunctionComponent = () => {
           <Route exact path="/about" render={() => (<About />)} />
           <Route exact path="/contactsUs" render={() => (<Contacts />)} />
           <Route exact path="/login" render={() => (<Login />)} />
+          <Route exact path="/change_password" render={() => (<ChangePass />)} />
           <Route exact path="/reset-password" render={() => (<ResetPassword />)} />
           <Route render={() => (<NotFound />)} />
         </Switch>

@@ -2,24 +2,28 @@ import { Reducer } from 'redux';
 import { BasicActions, BasicActionTypes } from '../actions/BasicActions';
 
 export interface IBasicState {
-  property: any;
+  userName: String,
+  password: String,
+  loggedIn: boolean
 }
 
-const initialBasicState: IBasicState = {
-  property: null
+const initialUserState: IBasicState = {
+  userName: '',
+  password: '',
+  loggedIn: false
 };
 
 export const BasicReducer: Reducer<IBasicState, BasicActions> = (
-  state = initialBasicState,
+  state = initialUserState,
   action
 ) => {
 
   switch (action.type) {
 
-    case BasicActionTypes.BASIC: {
+    case BasicActionTypes.LOG_IN: {
       return {
         ...state,
-        property: action.property
+        [action.key]: action.value
       };
     }
 
