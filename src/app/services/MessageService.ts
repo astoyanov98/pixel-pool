@@ -5,19 +5,19 @@ import { database } from "../../firebaseSetup";
 const db = database.collection('/messages');
 
 class MessageDataService {
-    getAll () {
+    getAll() {
         return db;
     }
 
-    create (message: IMessageData) {
+    create(message: IMessageData) {
         return db.add(message);
     }
 
-    update (id: string, value: any) {
+    update(id: string, value: any) {
         return db.doc(id).update(value);
     }
 
-    delete (id: string) {
+    delete(id: string) {
         return db.doc(id).delete();
     }
 }
