@@ -8,6 +8,7 @@ import { ResetPassword } from './app/containers/ResetPassword';
 import { StartPage } from './app/containers/StartPage';
 import ChangePass from './app/containers/ChangePass';
 import './styles/App.css';
+import { Tickets } from './app/containers/Tickets'
 
 export const App: React.FunctionComponent = () => {
   return (
@@ -21,6 +22,7 @@ export const App: React.FunctionComponent = () => {
           <Route exact path="/login" render={() => (<Login />)} />
           <Route exact path="/change_password" render={() => (<ChangePass />)} />
           <Route exact path="/reset-password" render={() => (<ResetPassword />)} />
+          <Route exact path="/tickets" render={() => (<Tickets />)} />
           <Route render={() => (<NotFound />)} />
         </Switch>
       </BrowserRouter>
